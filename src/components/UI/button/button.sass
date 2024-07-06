@@ -1,0 +1,15 @@
+@import './../../../styles/variables.sass'
+  
+.button
+  padding: 10px 25px
+  font-weight: bold
+  background-color: $dark-color
+  border: none
+  border-radius: 5px
+  color: $light-color
+  cursor: pointer
+  transition: background-color 0.3s
+
+  @media (any-hover: hover)
+    &:hover
+      background-color: lighten($dark-color, 20)

@@ -2,6 +2,7 @@ import { Component, PropsWithChildren } from 'react';
 import './button.sass';
 
 interface ButtonProps extends PropsWithChildren {
+  type: 'button' | 'error';
   onClick: () => void;
 }
 
@@ -16,8 +17,13 @@ class Button extends Component<ButtonProps> {
   }
 
   render() {
+    const buttonClass = `button ${this.props.type === 'error' ? 'button_error' : ''}`;
     return (
-      <button className="button" type="button" onClick={(e) => this.onClick(e)}>
+      <button
+        className={buttonClass}
+        type="button"
+        onClick={(e) => this.onClick(e)}
+      >
         {this.props.children}
       </button>
     );

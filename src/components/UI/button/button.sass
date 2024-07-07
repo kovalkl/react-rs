@@ -8,8 +8,12 @@
   border-radius: 5px
   color: $light-color
   cursor: pointer
-  transition: background-color 0.3s
+  transition: opacity 0.3s
+
+  &_error
+    background-color: $accent-color
+
 
   @media (any-hover: hover)
     &:hover
-      background-color: lighten($dark-color, 20)
+      opacity: 0.8

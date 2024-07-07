@@ -3,23 +3,21 @@ import './searchBar.sass';
 import Button from '../UI/button/Button';
 import TextInput from '../UI/textInput/TextInput';
 
-class SearchBar extends Component {
-  state = {
-    searchText: '',
-  };
+interface SearchBarProps {
+  value: string;
+  changeSearchText: (searchText: string) => void;
+  searchDog: () => void;
+}
 
-  handleClick() {
-    console.log(`search: ${this.state.searchText}`);
-  }
-
+class SearchBar extends Component<SearchBarProps> {
   render() {
     return (
       <form className="search">
         <TextInput
-          value={this.state.searchText}
-          onChange={(e) => this.setState({ searchText: e.target.value })}
+          value={this.props.value}
+          onChange={(e) => this.props.changeSearchText(e.target.value)}
         />
-        <Button onClick={() => this.handleClick()}>Search</Button>
+        <Button onClick={this.props.searchDog}>Search</Button>
       </form>
     );
   }

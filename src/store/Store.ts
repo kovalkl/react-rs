@@ -33,6 +33,10 @@ class Store {
     return this.hasStore(this.keys.SEARCH_HISTORY);
   }
 
+  public removeSearchHistory(): void {
+    this.removeStore(this.keys.SEARCH_HISTORY);
+  }
+
   private getStore(key: string): string {
     return localStorage.getItem(key)!;
   }
@@ -43,6 +47,10 @@ class Store {
 
   private setStore(key: string, value: string): void {
     localStorage.setItem(key, value);
+  }
+
+  private removeStore(key: string): void {
+    localStorage.removeItem(key);
   }
 }
 

@@ -16,10 +16,11 @@ class DogsList extends Component<DogsListProps> {
   render() {
     return (
       <div className="dogs-list">
-        {this.props.dogs &&
-          this.props.dogs.map((dog: Dog) => (
-            <DogsItem key={dog.id} dog={dog} />
-          ))}
+        {this.props.dogs && this.props.dogs.length ? (
+          this.props.dogs.map((dog: Dog) => <DogsItem key={dog.id} dog={dog} />)
+        ) : (
+          <div>No dogs found</div>
+        )}
       </div>
     );
   }

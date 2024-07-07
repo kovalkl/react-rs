@@ -4,6 +4,7 @@ import DogsBlock from './components/dogsBlock/DogsBlock';
 import { Dog } from './shared/types';
 import dogsService from './services/DogsService';
 import { Store } from './store/Store';
+import { trimText } from './utils/trimText';
 
 interface AppState {
   dogs: Dog[];
@@ -48,19 +49,20 @@ class App extends Component<object, AppState> {
   async searchDogs() {
     this.setState({ loading: true });
 
-    if (this.state.searchText === '') {
+    const formatText = trimText(this.state.searchText);
+    this.setState({ searchText: formatText });
+
+    if (formatText === '') {
       this.state.store.removeSearchHistory();
       this.setState({ searchText: '' });
       this.componentDidMount();
       return;
     } else {
-      this.state.store.setSearchHistory(this.state.searchText);
+      this.state.store.setSearchHistory(formatText);
     }
 
     try {
-      const response: Dog[] = await dogsService.getDogsByName(
-        this.state.searchText,
-      );
+      const response: Dog[] = await dogsService.getDogsByName(formatText);
       this.setState({ dogs: response, loading: false });
     } catch (error) {
       this.setCatch(error);

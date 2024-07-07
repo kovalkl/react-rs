@@ -10,7 +10,7 @@ interface SearchBarProps {
 }
 
 class SearchBar extends Component<SearchBarProps> {
-  throwError = () => {
+  private throwError = () => {
     try {
       throw new Error('Simulated Error');
     } catch (error) {
@@ -21,9 +21,14 @@ class SearchBar extends Component<SearchBarProps> {
     }
   };
 
+  private searchDog = (e: React.FormEvent) => {
+    e.preventDefault();
+    this.props.searchDog();
+  };
+
   render() {
     return (
-      <form className="search">
+      <form className="search" onSubmit={(e) => this.searchDog(e)}>
         <TextInput
           value={this.props.value}
           onChange={(e) => this.props.changeSearchText(e.target.value)}

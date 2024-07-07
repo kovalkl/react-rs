@@ -9,6 +9,13 @@ class DogsService {
     );
     return response.data;
   }
+
+  public async getDogsByName(name: string): Promise<Dog[]> {
+    const response: { data: Dog[] } = await requestApi.get(
+      `breeds/search?q=${name}&limit=12&page=1`,
+    );
+    return response.data;
+  }
 }
 
 const dogsService = new DogsService();

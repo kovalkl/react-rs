@@ -1,18 +1,18 @@
-export interface Dog {
-  weight: {
-    imperial: string;
-    metric: string;
-  };
-  height: {
-    imperial: string;
-    metric: string;
-  };
-  id: number;
+export interface Person {
   name: string;
-  country_code?: string;
-  bred_for?: string;
-  breed_group?: string;
-  life_span: string;
-  temperament?: string;
-  reference_image_id?: string;
+  height: string;
+  mass: string;
+  hair_color: string;
+  skin_color: string;
+  eye_color: string;
+  birth_year: string;
+  gender: string;
+  homeworld: string;
+  films: string[];
+  species: string[];
+  vehicles: string[];
+  starships: string[];
+  created: string;
+  edited: string;
+  url: string;
 }

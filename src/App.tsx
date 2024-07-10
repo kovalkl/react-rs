@@ -1,13 +1,13 @@
 import { Component } from 'react';
 import SearchBar from './components/searchBar/SearchBar';
-import DogsBlock from './components/dogsBlock/DogsBlock';
-import { Dog } from './shared/types';
-import dogsService from './services/DogsService';
+import CardsBlock from './components/cardsBlock/CardsBlock';
+import { Person } from './shared/types';
+import peopleService from './services/PeopleService';
 import { Store } from './store/Store';
 import { trimText } from './utils/trimText';
 
 interface AppState {
-  dogs: Dog[];
+  people: Person[];
   loading: boolean;
   searchText: string;
   store: Store;
@@ -17,7 +17,7 @@ class App extends Component<object, AppState> {
   constructor(props: AppState) {
     super(props);
     this.state = {
-      dogs: [],
+      people: [],
       loading: true,
       searchText: '',
       store: new Store(),
@@ -34,19 +34,19 @@ class App extends Component<object, AppState> {
     await this.setSearchText();
 
     if (this.state.searchText !== '') {
-      this.searchDogs();
+      this.searchPerson();
       return;
     }
 
     try {
-      const response: Dog[] = await dogsService.getDogs();
-      this.setState({ dogs: response, loading: false });
+      const response: Person[] = await peopleService.getPeople();
+      this.setState({ people: response, loading: false });
     } catch (error) {
       this.setCatch(error);
     }
   }
 
-  async searchDogs() {
+  async searchPerson() {
     this.setState({ loading: true });
 
     const formatText = trimText(this.state.searchText);
@@ -62,15 +62,16 @@ class App extends Component<object, AppState> {
     }
 
     try {
-      const response: Dog[] = await dogsService.getDogsByName(formatText);
-      this.setState({ dogs: response, loading: false });
+      const response: Person[] =
+        await peopleService.getPersonBySearch(formatText);
+      this.setState({ people: response, loading: false });
     } catch (error) {
       this.setCatch(error);
     }
   }
 
   setCatch(error: unknown) {
-    console.error('Error fetching dogs:', error);
+    console.error('Error fetching people:', error);
     this.setState({ loading: false });
   }
 
@@ -80,9 +81,9 @@ class App extends Component<object, AppState> {
         <SearchBar
           value={this.state.searchText}
           changeSearchText={(e) => this.setState({ searchText: e })}
-          searchDog={() => this.searchDogs()}
+          searchPerson={() => this.searchPerson()}
         />
-        <DogsBlock loading={this.state.loading} dogs={this.state.dogs} />
+        <CardsBlock loading={this.state.loading} people={this.state.people} />
       </div>
     );
   }

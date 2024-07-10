@@ -1,4 +1,5 @@
 @import './../../../styles/variables.sass'
+@import './../../../styles/mixins.sass'
   
 .text-input
   max-width: 300px
@@ -6,7 +7,5 @@
   padding: 10px
   font-family: Roboto
   background-color: $light-color
-  border: 1px solid $dark-color
   border-radius: 5px
-  &:focus
-    outline: 1px solid $dark-color
+  @include glowing-focus

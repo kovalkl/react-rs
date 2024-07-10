@@ -1,19 +1,18 @@
 @import './../../../styles/variables.sass'
+@import './../../../styles/mixins.sass'
   
 .button
   padding: 10px 25px
   border: none
   border-radius: 5px
-  background-color: $dark-color
-  color: $light-color
+  background-color: $accent-color
+  color: $dark-color
+  font-weight: bold
   letter-spacing: 1px
   cursor: pointer
-  transition: opacity 0.3s
 
   &_error
-    background-color: $accent-color
+    background-color: $dark-color
+    color: $accent-color
 
-
-  @media (any-hover: hover)
-    &:hover
-      opacity: 0.8
+  @include glowing-hover

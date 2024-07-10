@@ -6,7 +6,7 @@ import TextInput from './../UI/textInput/TextInput';
 interface SearchBarProps {
   value: string;
   changeSearchText: (searchText: string) => void;
-  searchDog: () => void;
+  searchPerson: () => void;
 }
 
 class SearchBar extends Component<SearchBarProps> {
@@ -21,19 +21,19 @@ class SearchBar extends Component<SearchBarProps> {
     }
   };
 
-  private searchDog = (e: React.FormEvent) => {
+  private searchPerson = (e: React.FormEvent) => {
     e.preventDefault();
-    this.props.searchDog();
+    this.props.searchPerson();
   };
 
   render() {
     return (
-      <form className="search" onSubmit={(e) => this.searchDog(e)}>
+      <form className="search" onSubmit={(e) => this.searchPerson(e)}>
         <TextInput
           value={this.props.value}
           onChange={(e) => this.props.changeSearchText(e.target.value)}
         />
-        <Button type="button" onClick={this.props.searchDog}>
+        <Button type="button" onClick={this.props.searchPerson}>
           Search
         </Button>
         <Button type="error" onClick={this.throwError}>

@@ -1,6 +1,7 @@
 @import './../../styles/variables.sass'
+@import './../../styles/mixins.sass'
   
-.dog
+.person
   display: flex
   flex-direction: column
   justify-content: space-between
@@ -10,7 +11,12 @@
   padding: 20px
   background: $light-color
   border-radius: 5px
-  border: 1px solid darken($background-color, 30 )
+  border: 2px solid #ffd700
+  @include glowing-hover
   &__name
+    font-size: 1.4rem
     font-weight: bold
     color: $dark-color
+  
+  &__description-title
+    font-weight: bold

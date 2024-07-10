@@ -1,7 +1,7 @@
 const baseErrorMessage = 'Something went wrong with the request';
 
 class RequestApi {
-  private base_url: string = 'https://api.thedogapi.com/v1/';
+  private base_url: string = 'https://swapi.dev/api/people/';
 
   public async get<T>(url: string): Promise<{ data: T }> {
     const response: Response = await fetch(`${this.base_url}${url}`);

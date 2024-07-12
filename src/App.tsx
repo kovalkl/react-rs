@@ -1,92 +1,55 @@
-import { Component } from 'react';
-import SearchBar from './components/searchBar/SearchBar';
+import { useEffect, useState } from 'react';
+
 import CardsBlock from './components/cardsBlock/CardsBlock';
-import { Person } from './shared/types';
+import SearchBar from './components/searchBar/SearchBar';
+import useFetching from './hooks/useFetching';
+import useSearchQuery from './hooks/useSearchQuery';
 import peopleService from './services/PeopleService';
-import { Store } from './store/Store';
+import { Person } from './shared/types';
 import { trimText } from './utils/trimText';
 
-interface AppState {
-  people: Person[];
-  loading: boolean;
-  searchText: string;
-  store: Store;
-}
+const App = () => {
+  const [searchText, setSearchText] = useSearchQuery();
+  const [people, setPeople] = useState<Person[]>([]);
+  const [triggerSearch, setTriggerSearch] = useState(false);
 
-class App extends Component<object, AppState> {
-  constructor(props: AppState) {
-    super(props);
-    this.state = {
-      people: [],
-      loading: true,
-      searchText: '',
-      store: new Store(),
-    };
-  }
+  const [fetchPeople, isLoadingPeople] = useFetching(async () => {
+    const people = await peopleService.getPeople();
+    setPeople(people);
+  });
 
-  async setSearchText() {
-    if (this.state.store.hasSearchHistory()) {
-      this.setState({ searchText: this.state.store.getSearchHistory() });
-    }
-  }
+  const [fetchPersonBySearch, isLoadingPersonBySearch] = useFetching(async () => {
+    const people = await peopleService.getPersonBySearch(searchText);
+    setPeople(people);
+  });
 
-  async componentDidMount() {
-    await this.setSearchText();
-
-    if (this.state.searchText !== '') {
-      this.searchPerson();
-      return;
-    }
-
-    try {
-      const response: Person[] = await peopleService.getPeople();
-      this.setState({ people: response, loading: false });
-    } catch (error) {
-      this.setCatch(error);
-    }
-  }
-
-  async searchPerson() {
-    this.setState({ loading: true });
-
-    const formatText = trimText(this.state.searchText);
-    this.setState({ searchText: formatText });
-
-    if (formatText === '') {
-      this.state.store.removeSearchHistory();
-      this.setState({ searchText: '' });
-      this.componentDidMount();
-      return;
+  useEffect(() => {
+    if (searchText) {
+      fetchPersonBySearch();
     } else {
-      this.state.store.setSearchHistory(formatText);
+      fetchPeople();
     }
+    setTriggerSearch(false);
+  }, [triggerSearch]);
 
-    try {
-      const response: Person[] =
-        await peopleService.getPersonBySearch(formatText);
-      this.setState({ people: response, loading: false });
-    } catch (error) {
-      this.setCatch(error);
-    }
-  }
+  const searchPerson = () => {
+    const formatText = trimText(searchText);
+    setSearchText(formatText);
 
-  setCatch(error: unknown) {
-    console.error('Error fetching people:', error);
-    this.setState({ loading: false });
-  }
+    formatText === '' ? fetchPeople() : fetchPersonBySearch();
+    setTriggerSearch(true);
+  };
 
-  render() {
-    return (
-      <div className="app">
-        <SearchBar
-          value={this.state.searchText}
-          changeSearchText={(e) => this.setState({ searchText: e })}
-          searchPerson={() => this.searchPerson()}
-        />
-        <CardsBlock loading={this.state.loading} people={this.state.people} />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="app">
+      <SearchBar
+        value={searchText}
+        changeSearchText={(e) => setSearchText(e)}
+        searchPerson={() => searchPerson()}
+      />
+      <CardsBlock isLoading={isLoadingPeople || isLoadingPersonBySearch} people={people} />
+    </div>
+  );
+};
 
 export default App;

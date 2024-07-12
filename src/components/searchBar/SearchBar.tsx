@@ -1,7 +1,6 @@
-import { Component } from 'react';
-import './searchBar.sass';
 import Button from './../UI/button/Button';
 import TextInput from './../UI/textInput/TextInput';
+import './searchBar.sass';
 
 interface SearchBarProps {
   value: string;
@@ -9,39 +8,20 @@ interface SearchBarProps {
   searchPerson: () => void;
 }
 
-class SearchBar extends Component<SearchBarProps> {
-  private throwError = () => {
-    try {
-      throw new Error('Simulated Error');
-    } catch (error) {
-      console.error(error);
-      this.setState(() => {
-        throw error;
-      });
-    }
-  };
-
-  private searchPerson = (e: React.FormEvent) => {
+const SearchBar = ({ value, changeSearchText, searchPerson }: SearchBarProps) => {
+  const handleSearchPerson = (e: React.FormEvent) => {
     e.preventDefault();
-    this.props.searchPerson();
+    searchPerson();
   };
 
-  render() {
-    return (
-      <form className="search" onSubmit={(e) => this.searchPerson(e)}>
-        <TextInput
-          value={this.props.value}
-          onChange={(e) => this.props.changeSearchText(e.target.value)}
-        />
-        <Button type="button" onClick={this.props.searchPerson}>
-          Search
-        </Button>
-        <Button type="error" onClick={this.throwError}>
-          Error
-        </Button>
-      </form>
-    );
-  }
-}
+  return (
+    <form className="search" onSubmit={(e) => handleSearchPerson(e)}>
+      <TextInput value={value} onChange={(e) => changeSearchText(e.target.value)} />
+      <Button type="button" onClick={searchPerson}>
+        Search
+      </Button>
+    </form>
+  );
+};
 
 export default SearchBar;

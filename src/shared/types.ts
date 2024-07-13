@@ -16,3 +16,13 @@ export interface Person {
   edited: string;
   url: string;
 }
+
+export interface IPagination {
+  count: number;
+  next: string | null;
+  previous: string | null;
+}
+
+export interface IResponsePeople extends IPagination {
+  results: Person[];
+}

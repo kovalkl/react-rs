@@ -1,33 +1,31 @@
-import { Component, PropsWithChildren } from 'react';
 import './button.sass';
 
-interface ButtonProps extends PropsWithChildren {
+interface IButtonProps {
   type: 'button' | 'error';
-  onClick: () => void;
+  disabled?: boolean;
+  onClick?: () => void;
+  children: React.ReactNode;
 }
 
-class Button extends Component<ButtonProps> {
-  constructor(props: ButtonProps) {
-    super(props);
-  }
-
-  onClick(e: React.MouseEvent<HTMLButtonElement>) {
+const Button = ({ type, onClick, disabled, children }: IButtonProps) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (disabled) return;
     e.preventDefault();
-    this.props.onClick();
-  }
+    onClick && onClick();
+  };
 
-  render() {
-    const buttonClass = `button ${this.props.type === 'error' ? 'button_error' : ''}`;
-    return (
-      <button
-        className={buttonClass}
-        type="button"
-        onClick={(e) => this.onClick(e)}
-      >
-        {this.props.children}
-      </button>
-    );
-  }
-}
+  const buttonClass = `button ${type === 'error' ? 'button_error' : ''}`;
+
+  return (
+    <button
+      className={buttonClass}
+      type="button"
+      onClick={(e) => handleClick(e)}
+      disabled={disabled}
+    >
+      {children}
+    </button>
+  );
+};
 
 export default Button;

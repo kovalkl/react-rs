@@ -1,25 +1,17 @@
+import { IResponsePeople } from '../shared/types';
 import requestApi from './RequestApi';
 
-import { Person } from '../shared/types';
-
-interface IResponse {
-  count: number;
-  next: string | null;
-  previous: string | null;
-  results: Person[];
-}
-
 class PeopleService {
-  public async getPeople(): Promise<Person[]> {
-    const response: { data: IResponse } = await requestApi.get('');
-    return response.data.results;
+  public async getPeople(page: number): Promise<IResponsePeople> {
+    const response: { data: IResponsePeople } = await requestApi.get(`?page=${page}`);
+    return response.data;
   }
 
-  public async getPersonBySearch(searchQuery: string): Promise<Person[]> {
-    const response: { data: IResponse } = await requestApi.get(
-      `?search=${searchQuery}`,
+  public async getPersonBySearch(searchQuery: string, page: number): Promise<IResponsePeople> {
+    const response: { data: IResponsePeople } = await requestApi.get(
+      `?search=${searchQuery}&page=${page}`,
     );
-    return response.data.results;
+    return response.data;
   }
 }
 

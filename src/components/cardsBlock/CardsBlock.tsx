@@ -4,13 +4,12 @@ import './cardsBlock.sass';
 
 interface CardsBlockProps {
   people: Person[];
-  isLoading: boolean;
 }
 
-const CardsBlock = ({ people, isLoading }: CardsBlockProps) => {
+const CardsBlock = ({ people }: CardsBlockProps) => {
   return (
     <div className="cards">
-      {isLoading ? <div className="accent-text">Loading...</div> : <CardsList people={people} />}
+      <CardsList people={people} />
     </div>
   );
 };

@@ -16,3 +16,13 @@
     color: $accent-color
 
   @include glowing-hover
+
+  &:disabled
+    opacity: 0.5
+    border: 1px solid $accent-color
+    background-color: $background-color
+    color: $accent-color
+    cursor: auto
+    @media(any-hover: hover)
+      &:hover
+        box-shadow: none

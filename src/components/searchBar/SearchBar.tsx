@@ -1,23 +1,30 @@
+import { useState } from 'react';
+
 import Button from './../UI/button/Button';
 import TextInput from './../UI/textInput/TextInput';
 import './searchBar.sass';
 
 interface SearchBarProps {
-  value: string;
-  changeSearchText: (searchText: string) => void;
-  searchPerson: () => void;
+  storeValue: string;
+  searchPerson: (inputText: string) => void;
 }
 
-const SearchBar = ({ value, changeSearchText, searchPerson }: SearchBarProps) => {
-  const handleSearchPerson = (e: React.FormEvent) => {
-    e.preventDefault();
-    searchPerson();
+const SearchBar = ({ storeValue, searchPerson }: SearchBarProps) => {
+  const [inputText, setInputText] = useState('');
+
+  if (storeValue !== '') {
+    setInputText(storeValue);
+  }
+
+  const handleSearchPerson = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    searchPerson(inputText);
   };
 
   return (
     <form className="search" onSubmit={(e) => handleSearchPerson(e)}>
-      <TextInput value={value} onChange={(e) => changeSearchText(e.target.value)} />
-      <Button type="button" onClick={searchPerson}>
+      <TextInput value={inputText} onChange={(e) => setInputText(e.target.value)} />
+      <Button type="button" onClick={() => handleSearchPerson()}>
         Search
       </Button>
     </form>

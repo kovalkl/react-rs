@@ -10,7 +10,7 @@ const useSearchQuery = (): [string, Dispatch<SetStateAction<string>>] => {
     return () => {
       store.setSearchHistory(value);
     };
-  });
+  }, [value]);
 
   return [value, setValue];
 };

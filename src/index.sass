@@ -8,6 +8,19 @@ body
   font-family: Roboto
   background-color: $background-color
   color: $text-color
+  overflow-y: scroll
+
+  &::-webkit-scrollbar
+    width: 6px
+    background-color: $background-color
+
+  &::-webkit-scrollbar-thumb
+    border-radius: 10px
+    background-color: $accent-color
+
+  &::-webkit-scrollbar-track
+    border-radius: 10px
+    background-color: $background-color
 
   & p
     padding: 0

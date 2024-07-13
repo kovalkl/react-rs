@@ -7,8 +7,8 @@ import Button from '../UI/button/Button';
 import './details.sass';
 
 interface IDetailsProps {
-  personId: string;
-  setCurrentPersonId: (id: string) => void;
+  personId: number;
+  setCurrentPersonId: (personId: string) => void;
 }
 
 const Details = ({ personId, setCurrentPersonId }: IDetailsProps) => {

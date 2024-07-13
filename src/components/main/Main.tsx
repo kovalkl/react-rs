@@ -26,7 +26,7 @@ const Main = ({ people, page, currentPage, changePage }: IMainProps) => {
         />
       </div>
       {currentPersonId !== '0' && (
-        <Details personId={currentPersonId} setCurrentPersonId={() => setCurrentPersonId('0')} />
+        <Details personId={Number(currentPersonId)} setCurrentPersonId={setCurrentPersonId} />
       )}
     </main>
   );

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import Main from './components/main/Main';
 import SearchBar from './components/searchBar/SearchBar';
@@ -9,6 +10,7 @@ import { IResponsePeople, Person } from './shared/types';
 import { trimText } from './utils/trimText';
 
 const App = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [searchText, setSearchText] = useSearchQuery();
   const [people, setPeople] = useState<Person[]>([]);
   const [page, setPage] = useState({
@@ -16,7 +18,7 @@ const App = () => {
     next: null as string | null,
     previous: null as string | null,
   });
-  const [currentPage, setCurrentPage] = useState(1);
+  const currentPage = Number(searchParams.get('page')) || 1;
 
   const [fetchPeople, isLoadingPeople] = useFetching(async () => {
     const { results, count, next, previous }: IResponsePeople =
@@ -58,8 +60,8 @@ const App = () => {
   }, [currentPage, searchText]);
 
   const searchPerson = (inputText: string) => {
-    setCurrentPage(1);
     setSearchText(trimText(inputText));
+    setSearchParams({ page: '1' });
   };
 
   return (
@@ -71,7 +73,12 @@ const App = () => {
       {isLoadingPeople || isLoadingPersonBySearch ? (
         <div className="accent-text center-text">Loading...</div>
       ) : (
-        <Main people={people} page={page} currentPage={currentPage} changePage={setCurrentPage} />
+        <Main
+          people={people}
+          page={page}
+          currentPage={currentPage}
+          changePage={(page) => setSearchParams({ page: page.toString() })}
+        />
       )}
     </div>
   );

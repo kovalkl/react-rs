@@ -7,6 +7,7 @@ const useSearchQuery = (): [string, Dispatch<SetStateAction<string>>] => {
   const [value, setValue] = useState(store.getSearchHistory() || '');
 
   useEffect(() => {
+    store.setSearchHistory(value);
     return () => {
       store.setSearchHistory(value);
     };

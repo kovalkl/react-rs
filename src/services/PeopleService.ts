@@ -14,7 +14,7 @@ class PeopleService {
     return response.data;
   }
 
-  public async getPersonById(id: string): Promise<Person> {
+  public async getPersonById(id: number): Promise<Person> {
     const response: { data: Person } = await requestApi.get(`${id}`);
     return response.data;
   }

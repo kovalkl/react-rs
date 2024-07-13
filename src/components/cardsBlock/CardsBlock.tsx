@@ -4,13 +4,14 @@ import './cardsBlock.sass';
 
 interface CardsBlockProps {
   people: Person[];
+  setCurrentPersonId: (id: string) => void;
 }
 
-const CardsBlock = ({ people }: CardsBlockProps) => {
+const CardsBlock = ({ people, setCurrentPersonId }: CardsBlockProps) => {
   return (
-    <div className="cards">
-      <CardsList people={people} />
-    </div>
+    <section className="cards">
+      <CardsList people={people} setCurrentPerson={(id: string) => setCurrentPersonId(id)} />
+    </section>
   );
 };
 

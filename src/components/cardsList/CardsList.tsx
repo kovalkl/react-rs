@@ -4,17 +4,26 @@ import './cardsList.sass';
 
 interface CardsListProps {
   people: Person[];
+  setCurrentPerson: (id: string) => void;
 }
 
-const CardsList = ({ people }: CardsListProps) => {
+const CardsList = ({ people, setCurrentPerson }: CardsListProps) => {
   return (
-    <div className="cards-list">
+    <>
       {people && people.length ? (
-        people.map((person: Person) => <CardItem key={person.edited} person={person} />)
+        <ul className="cards-list">
+          {people.map((person: Person) => (
+            <CardItem
+              key={person.edited}
+              person={person}
+              setCurrentPerson={(id: string) => setCurrentPerson(id)}
+            />
+          ))}
+        </ul>
       ) : (
         <div className="accent-text">No people found...</div>
       )}
-    </div>
+    </>
   );
 };
 

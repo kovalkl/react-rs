@@ -1,4 +1,4 @@
-import { IResponsePeople } from '../shared/types';
+import { IResponsePeople, Person } from '../shared/types';
 import requestApi from './RequestApi';
 
 class PeopleService {
@@ -11,6 +11,11 @@ class PeopleService {
     const response: { data: IResponsePeople } = await requestApi.get(
       `?search=${searchQuery}&page=${page}`,
     );
+    return response.data;
+  }
+
+  public async getPersonById(id: string): Promise<Person> {
+    const response: { data: Person } = await requestApi.get(`${id}`);
     return response.data;
   }
 }

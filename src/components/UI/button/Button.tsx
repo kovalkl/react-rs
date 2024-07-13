@@ -5,16 +5,17 @@ interface IButtonProps {
   disabled?: boolean;
   onClick?: () => void;
   children: React.ReactNode;
+  className?: string;
 }
 
-const Button = ({ type, onClick, disabled, children }: IButtonProps) => {
+const Button = ({ type, onClick, disabled, children, className }: IButtonProps) => {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (disabled) return;
     e.preventDefault();
     onClick && onClick();
   };
 
-  const buttonClass = `button ${type === 'error' ? 'button_error' : ''}`;
+  const buttonClass = `button ${type === 'error' ? 'button_error' : ''} ${className}`;
 
   return (
     <button

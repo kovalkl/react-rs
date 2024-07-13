@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import CardsBlock from './components/cardsBlock/CardsBlock';
-import Pagination from './components/pagination/Pagination';
+import Main from './components/main/Main';
 import SearchBar from './components/searchBar/SearchBar';
 import useFetching from './hooks/useFetching';
 import useSearchQuery from './hooks/useSearchQuery';
@@ -72,10 +71,7 @@ const App = () => {
       {isLoadingPeople || isLoadingPersonBySearch ? (
         <div className="accent-text center-text">Loading...</div>
       ) : (
-        <>
-          <CardsBlock people={people} />
-          <Pagination page={page} currentPage={currentPage} changePage={setCurrentPage} />
-        </>
+        <Main people={people} page={page} currentPage={currentPage} changePage={setCurrentPage} />
       )}
     </div>
   );

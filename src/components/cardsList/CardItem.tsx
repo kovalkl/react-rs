@@ -1,8 +1,10 @@
 import { Person } from '../../shared/types';
+import { getPersonId } from '../../utils/getPersonId';
 import './cardItem.sass';
 
 interface CardItemProps {
   person: Person;
+  setCurrentPerson: (id: string) => void;
 }
 
 const PERSON_PARAMS = {
@@ -12,9 +14,13 @@ const PERSON_PARAMS = {
   eye_color: 'Eye color',
 };
 
-const CardItem = ({ person }: CardItemProps) => {
+const CardItem = ({ person, setCurrentPerson }: CardItemProps) => {
   return (
-    <div className="person">
+    <li
+      className="person"
+      id={getPersonId(person.url)}
+      onClick={() => setCurrentPerson(getPersonId(person.url))}
+    >
       <div>
         <p className="person__name">{person.name}</p>
         <p>{person.birth_year}</p>
@@ -29,7 +35,7 @@ const CardItem = ({ person }: CardItemProps) => {
           ))}
         </ul>
       </div>
-    </div>
+    </li>
   );
 };
 

@@ -11,7 +11,7 @@ const CardsList = ({ people, setCurrentPerson }: CardsListProps) => {
   return (
     <>
       {people && people.length ? (
-        <ul className="cards-list">
+        <ul className="cards-list" data-testid="cards-list">
           {people.map((person: Person) => (
             <CardItem
               key={person.edited}

@@ -2,7 +2,9 @@
   "compilerOptions": {
     "strict": true,
     "noImplicitAny": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "types": ["vitest/globals"],
+    "jsx": "react-jsx"
   },
   "files": [],
   "references": [

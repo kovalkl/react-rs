@@ -20,6 +20,7 @@ const CardItem = ({ person, setCurrentPerson }: CardItemProps) => {
       className="person"
       id={getPersonId(person.url)}
       onClick={() => setCurrentPerson(getPersonId(person.url))}
+      data-testid="card-item"
     >
       <div>
         <p className="person__name">{person.name}</p>

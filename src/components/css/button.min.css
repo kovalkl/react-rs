@@ -1,1 +1,35 @@
-.button{padding:10px 25px;border:none;border-radius:5px;background-color:gold;color:#291a51;border:1px solid gold;font-weight:bold;letter-spacing:1px;cursor:pointer;transition:box-shadow .3s}.button_error{background-color:#291a51;color:gold}@media(any-hover: hover){.button:hover{box-shadow:0 0 2px gold,0 0 7px gold,0 0 20px gold}}.button:disabled{opacity:.5;background-color:#0d1b2a;color:gold;cursor:auto}@media(any-hover: hover){.button:disabled:hover{box-shadow:none}}
+.button {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  background-color: gold;
+  color: #291a51;
+  border: 1px solid gold;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+}
+.button_error {
+  background-color: #291a51;
+  color: gold;
+}
+@media (any-hover: hover) {
+  .button:hover {
+    box-shadow:
+      0 0 2px gold,
+      0 0 7px gold,
+      0 0 20px gold;
+  }
+}
+.button:disabled {
+  opacity: 0.5;
+  background-color: #0d1b2a;
+  color: gold;
+  cursor: auto;
+}
+@media (any-hover: hover) {
+  .button:disabled:hover {
+    box-shadow: none;
+  }
+}

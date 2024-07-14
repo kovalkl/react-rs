@@ -1,1 +1,13 @@
-.main{padding:20px;flex-grow:1;display:flex;justify-content:center;gap:20px}.main__content{display:flex;flex-direction:column;gap:20px;justify-content:space-between}
+.main {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.main__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+}

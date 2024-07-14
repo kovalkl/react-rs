@@ -8,5 +8,8 @@
   transition: box-shadow 0.3s;
 }
 .text-input:focus {
-  box-shadow: 0 0 2px #ffd700, 0 0 7px #ffd700, 0 0 20px #ffd700;
+  box-shadow:
+    0 0 2px #ffd700,
+    0 0 7px #ffd700,
+    0 0 20px #ffd700;
 }

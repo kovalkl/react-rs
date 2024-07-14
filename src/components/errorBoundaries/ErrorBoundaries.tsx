@@ -1,4 +1,5 @@
 import { Component } from 'react';
+
 import './errorBoundaries.sass';
 
 interface ErrorBoundariesProps {
@@ -9,10 +10,7 @@ interface ErrorBoundariesState {
   hasError: boolean;
 }
 
-class ErrorBoundaries extends Component<
-  ErrorBoundariesProps,
-  ErrorBoundariesState
-> {
+class ErrorBoundaries extends Component<ErrorBoundariesProps, ErrorBoundariesState> {
   constructor(props: ErrorBoundariesProps) {
     super(props);
     this.state = { hasError: false };

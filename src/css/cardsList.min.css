@@ -1,1 +1,6 @@
-.cards-list{display:flex;flex-wrap:wrap;gap:20px;margin:0 auto}
+.cards-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 0 auto;
+}

@@ -8,7 +8,8 @@ export default defineConfig({
     globals: true,
     coverage: {
       provider: 'v8',
-      reporter: ['text', 'html'],
+      reporter: ['text', 'json', 'html'],
+      exclude: ['node_modules/'],
       reportsDirectory: './coverage',
     },
   },

@@ -33,7 +33,7 @@ const SearchBar = () => {
 
   return (
     <div className="search">
-      <form className="search__form container" onSubmit={handleSearchPerson}>
+      <form className="search__form" onSubmit={handleSearchPerson}>
         <TextInput value={inputText} onChange={(e) => setInputText(e.target.value)} />
         <Button type="button" onClick={handleSearchPerson}>
           Search

@@ -1,12 +1,15 @@
+import { useContext } from 'react';
+
+import { ThemeContext } from '../../store/ThemeContext';
+import Header from '../header/Header';
 import Main from './../main/Main';
-import Pagination from './../pagination/Pagination';
-import SearchBar from './../searchBar/SearchBar';
 
 const Layout = () => {
+  const { isDarkTheme } = useContext(ThemeContext);
+
   return (
-    <div className="app">
-      <SearchBar />
-      <Pagination />
+    <div className={`app ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
+      <Header />
       <Main />
     </div>
   );

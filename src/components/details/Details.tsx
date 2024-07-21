@@ -1,13 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import useFetching from '../../hooks/useFetching';
-import peopleService from '../../services/PeopleService';
-import { Person } from '../../shared/types';
-import Button from '../UI/button/Button';
+import useFetching from './../../hooks/useFetching';
+import peopleService from './../../services/PeopleService';
+import { Person } from './../../shared/types';
+import { ThemeContext } from './../../store/ThemeContext';
+import Button from './../UI/button/Button';
 import './details.sass';
 
 const Details = () => {
+  const { isDarkTheme } = useContext(ThemeContext);
   const { details } = useParams();
   const navigate = useNavigate();
   const [person, setPerson] = useState<Person>(Object);
@@ -22,7 +24,7 @@ const Details = () => {
   }, []);
 
   return (
-    <div className="details">
+    <div className={`details ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
       <div className="details__background" onClick={() => navigate(-1)}></div>
       <div className="details__content">
         {isLoadingPersonById || !Object.keys(person).length ? (

@@ -6,8 +6,6 @@ body
   margin: 0
   padding: 0
   font-family: Roboto
-  background-color: $light-color
-  color: $dark-color
   overflow-y: scroll
 
   &::-webkit-scrollbar
@@ -40,6 +38,15 @@ body
   min-height: 100vh
   display: flex
   flex-direction: column
+  gap: 40px
+
+.light-theme
+  background-color: $light-color
+  color: $dark-color
+
+.dark-theme
+  background-color: $dark-color
+  color: $light-color
 
 .container
   max-width:  1380px

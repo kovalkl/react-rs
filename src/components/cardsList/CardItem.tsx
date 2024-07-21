@@ -1,6 +1,8 @@
+import { useContext } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 
 import { Person } from '../../shared/types';
+import { ThemeContext } from '../../store/ThemeContext';
 import { getPersonId } from '../../utils/getPersonId';
 import { getSearchParams } from '../../utils/getSearchParams';
 import './cardItem.sass';
@@ -19,10 +21,11 @@ const PERSON_PARAMS = {
 const CardItem = ({ person }: CardItemProps) => {
   const [searchParams] = useSearchParams();
   const { currentPage, searchText } = getSearchParams(searchParams);
+  const { isDarkTheme } = useContext(ThemeContext);
   return (
     <Link
       to={`/details/${getPersonId(person.url)}?page=${currentPage}${searchText ? `&search=${searchText}` : ''}`}
-      className="person"
+      className={`person ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}
       id={getPersonId(person.url)}
       data-testid="card-item"
     >

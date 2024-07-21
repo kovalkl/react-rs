@@ -43,7 +43,7 @@ const Pagination = () => {
 
   return (
     <div className="container">
-      <div className="pagination accent-text">
+      <div className="pagination accent-text ">
         <Button
           type="button"
           disabled={!pageInfo.previous}

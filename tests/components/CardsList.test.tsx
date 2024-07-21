@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import React from 'react';
 
 import CardsList from './../../src/components/cardsList/CardsList.tsx';
-import { people } from './../testData.ts';
+import { people } from './../mockPeople.ts';
 
 describe('CardsList', () => {
   it('should render message if there are no people', () => {

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import useFetching from '../../hooks/useFetching';
 import peopleService from '../../services/PeopleService';
@@ -6,16 +7,12 @@ import { Person } from '../../shared/types';
 import Button from '../UI/button/Button';
 import './details.sass';
 
-interface IDetailsProps {
-  personId: number;
-  setCurrentPersonId: (personId: string) => void;
-}
-
-const Details = ({ personId, setCurrentPersonId }: IDetailsProps) => {
+const Details = () => {
+  const { details } = useParams();
+  const navigate = useNavigate();
   const [person, setPerson] = useState<Person>(Object);
-
   const [fetchPersonById, isLoadingPersonById] = useFetching(async () => {
-    const person: Person = await peopleService.getPersonById(personId);
+    const person: Person = await peopleService.getPersonById(parseInt(details!));
     setPerson(person);
   });
 
@@ -26,9 +23,9 @@ const Details = ({ personId, setCurrentPersonId }: IDetailsProps) => {
 
   return (
     <div className="details">
-      <div className="details__background" onClick={() => setCurrentPersonId('0')}></div>
+      <div className="details__background" onClick={() => navigate(-1)}></div>
       <div className="details__content">
-        {isLoadingPersonById ? (
+        {isLoadingPersonById || !Object.keys(person).length ? (
           <div className="accent-text center-text">Loading...</div>
         ) : (
           <>
@@ -40,7 +37,7 @@ const Details = ({ personId, setCurrentPersonId }: IDetailsProps) => {
               {person.mass}
               kg.
             </p>
-            <Button className="details__btn" type="button" onClick={() => setCurrentPersonId('0')}>
+            <Button className="details__btn" type="button" onClick={() => navigate(-1)}>
               Close
             </Button>
           </>

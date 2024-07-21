@@ -1,33 +1,45 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
+import useSearchQuery from '../../hooks/useSearchQuery';
 import Button from './../UI/button/Button';
 import TextInput from './../UI/textInput/TextInput';
 import './searchBar.sass';
 
-interface SearchBarProps {
-  storeValue: string;
-  searchPerson: (inputText: string) => void;
-}
-
-const SearchBar = ({ storeValue, searchPerson }: SearchBarProps) => {
-  const [inputText, setInputText] = useState(storeValue);
+const SearchBar = () => {
+  const setSearchParams = useSearchParams()[1];
+  const [searchText, setSearchText] = useSearchQuery();
+  const [inputText, setInputText] = useState(searchText);
 
   useEffect(() => {
-    setInputText(storeValue);
-  }, [storeValue]);
+    setInputText(searchText);
+    setSearchQueryToParams(searchText);
+  }, [searchText]);
 
   const handleSearchPerson = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-    searchPerson(inputText);
+    const trimText = inputText.trim();
+    setSearchText(trimText);
+    setSearchQueryToParams(trimText);
+  };
+
+  const setSearchQueryToParams = (searchText: string) => {
+    if (!searchText) {
+      setSearchParams({ page: '1' });
+    } else {
+      setSearchParams({ page: '1', search: searchText });
+    }
   };
 
   return (
-    <form className="search" onSubmit={handleSearchPerson}>
-      <TextInput value={inputText} onChange={(e) => setInputText(e.target.value)} />
-      <Button type="button" onClick={handleSearchPerson}>
-        Search
-      </Button>
-    </form>
+    <div className="search">
+      <form className="search__form container" onSubmit={handleSearchPerson}>
+        <TextInput value={inputText} onChange={(e) => setInputText(e.target.value)} />
+        <Button type="button" onClick={handleSearchPerson}>
+          Search
+        </Button>
+      </form>
+    </div>
   );
 };
 

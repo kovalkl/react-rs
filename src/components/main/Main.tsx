@@ -1,33 +1,49 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Outlet, useSearchParams } from 'react-router-dom';
 
-import { IPagination, Person } from '../../shared/types';
-import CardsBlock from '../cardsBlock/CardsBlock';
-import Details from '../details/Details';
-import Pagination from '../pagination/Pagination';
+import useFetching from './../../hooks/useFetching';
+import useSearchQuery from './../../hooks/useSearchQuery';
+import peopleService from './../../services/PeopleService';
+import { Person } from './../../shared/types';
+import { getSearchParams } from './../../utils/getSearchParams';
+import CardsList from './../cardsList/CardsList';
 import './main.sass';
 
-interface IMainProps {
-  people: Person[];
-  page: IPagination;
-  currentPage: number;
-  changePage: (page: number) => void;
-}
+const Main = () => {
+  const [searchParams] = useSearchParams();
+  const params = getSearchParams(searchParams);
+  const { currentPage } = params;
+  let { searchText } = params;
 
-const Main = ({ people, page, currentPage, changePage }: IMainProps) => {
-  const [currentPersonId, setCurrentPersonId] = useState('0');
+  const [searchStoreText] = useSearchQuery();
+
+  if (!searchText) {
+    searchText = searchStoreText;
+  }
+
+  const [people, setPeople] = useState<Person[]>([]);
+
+  const [fetchPeople, isLoadingPeople] = useFetching(async () => {
+    const { results } = await peopleService.getPeople(currentPage, searchText);
+    setPeople(results);
+  });
+
+  useEffect(() => {
+    fetchPeople();
+  }, [currentPage, searchText]);
+
   return (
     <main className="main">
-      <div className="main__content">
-        <CardsBlock people={people} setCurrentPersonId={(id: string) => setCurrentPersonId(id)} />
-        <Pagination
-          page={page}
-          currentPage={currentPage}
-          changePage={(page: number) => changePage(page)}
-        />
+      <div className="container">
+        {isLoadingPeople ? (
+          'Loading...'
+        ) : (
+          <div className="main__content">
+            <CardsList people={people} />
+            <Outlet />
+          </div>
+        )}
       </div>
-      {currentPersonId !== '0' && (
-        <Details personId={Number(currentPersonId)} setCurrentPersonId={setCurrentPersonId} />
-      )}
     </main>
   );
 };

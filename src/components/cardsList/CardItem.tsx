@@ -1,10 +1,12 @@
+import { Link, useSearchParams } from 'react-router-dom';
+
 import { Person } from '../../shared/types';
 import { getPersonId } from '../../utils/getPersonId';
+import { getSearchParams } from '../../utils/getSearchParams';
 import './cardItem.sass';
 
 interface CardItemProps {
   person: Person;
-  setCurrentPerson: (id: string) => void;
 }
 
 const PERSON_PARAMS = {
@@ -14,12 +16,14 @@ const PERSON_PARAMS = {
   eye_color: 'Eye color',
 };
 
-const CardItem = ({ person, setCurrentPerson }: CardItemProps) => {
+const CardItem = ({ person }: CardItemProps) => {
+  const [searchParams] = useSearchParams();
+  const { currentPage, searchText } = getSearchParams(searchParams);
   return (
-    <li
+    <Link
+      to={`/details/${getPersonId(person.url)}?page=${currentPage}${searchText ? `&search=${searchText}` : ''}`}
       className="person"
       id={getPersonId(person.url)}
-      onClick={() => setCurrentPerson(getPersonId(person.url))}
       data-testid="card-item"
     >
       <div>
@@ -36,7 +40,7 @@ const CardItem = ({ person, setCurrentPerson }: CardItemProps) => {
           ))}
         </ul>
       </div>
-    </li>
+    </Link>
   );
 };
 

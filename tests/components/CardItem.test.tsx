@@ -7,7 +7,7 @@ import React from 'react';
 
 import { getPersonId } from '../../src/utils/getPersonId.ts';
 import CardItem from './../../src/components/cardsList/CardItem.tsx';
-import { people } from './../testData.ts';
+import { people } from './../mockPeople.ts';
 
 describe('CardItem', () => {
   it('should render the relevant card information', () => {

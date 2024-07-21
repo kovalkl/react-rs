@@ -1,14 +1,15 @@
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 
 import React from 'react';
 
-import CardsList from './../../src/components/cardsList/CardsList.tsx';
-import { people } from './../mockPeople.ts';
+import CardsList from './../../src/components/cardsList/CardsList';
+import { people } from './../mockPeople';
+import renderWithRouter from './../test-utils';
 
 describe('CardsList', () => {
   it('should render message if there are no people', () => {
-    render(<CardsList people={[]} setCurrentPerson={() => {}} />);
+    renderWithRouter(<CardsList people={[]} />);
 
     const message = screen.getByText(/no people/i);
 
@@ -16,7 +17,7 @@ describe('CardsList', () => {
   });
 
   it('should render the specified number of cards', () => {
-    render(<CardsList people={people} setCurrentPerson={() => {}} />);
+    renderWithRouter(<CardsList people={people} />);
 
     const cardsList = screen.getByTestId('cards-list');
 

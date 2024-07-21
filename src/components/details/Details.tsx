@@ -26,7 +26,7 @@ const Details = () => {
   return (
     <div className={`details ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
       <div className="details__background" onClick={() => navigate(-1)}></div>
-      <div className="details__content">
+      <div className={`details__content  ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
         {isLoadingPersonById || !Object.keys(person).length ? (
           <div className="accent-text center-text">Loading...</div>
         ) : (

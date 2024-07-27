@@ -20,5 +20,11 @@
   &__description-title
     font-weight: bold
 
+  &__checkbox
+    transition: color 0.3s
+    @media (any-hover: hover)
+      &:hover
+        color: $accent-color
+
   &.checked
     box-shadow: $shadow-effect

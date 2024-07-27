@@ -17,9 +17,12 @@ const detailsSlice = createSlice({
     addDetails(state, action: PayloadAction<Person>) {
       state.person = action.payload;
     },
+    clearDetails(state) {
+      state.person = null;
+    },
   },
 });
 
-export const { addDetails } = detailsSlice.actions;
+export const { addDetails, clearDetails } = detailsSlice.actions;
 
 export default detailsSlice.reducer;

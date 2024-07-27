@@ -26,7 +26,7 @@ const CardItem = ({ person, selectedPeople }: CardItemProps) => {
   const { isDarkTheme } = useContext(ThemeContext);
   const dispatch = useAppDispatch();
 
-  const toggleStore = (e: React.MouseEvent<HTMLLabelElement>) => {
+  const toggleStore = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.stopPropagation();
     if (!(e.target instanceof HTMLInputElement)) {
       return;
@@ -58,8 +58,8 @@ const CardItem = ({ person, selectedPeople }: CardItemProps) => {
           ))}
         </ul>
       </div>
-      <label className="check-label" onClick={(e) => toggleStore(e)}>
-        <input type="checkbox" checked={isChecked()} />
+      <label className="check-label person__checkbox" onClick={(e) => e.stopPropagation()}>
+        <input type="checkbox" checked={isChecked()} onChange={(e) => toggleStore(e)} />
         Add to Store
       </label>
     </Link>

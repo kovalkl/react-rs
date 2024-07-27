@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch } from './../../hooks/useAppDispatch';
 import { useGetPersonByIdQuery } from './../../redux/peopleApi';
 import { ThemeContext } from './../../store/ThemeContext';
-import { addDetails } from './../../store/detailsSlice';
+import { addDetails, clearDetails } from './../../store/detailsSlice';
 import Button from './../UI/button/Button';
 import './details.sass';
 
@@ -20,9 +20,14 @@ const Details = () => {
     dispatch(addDetails(person));
   }
 
+  const closeDetails = () => {
+    dispatch(clearDetails());
+    navigate(-1);
+  };
+
   return (
     <div className={`details ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
-      <div className="details__background" onClick={() => navigate(-1)}></div>
+      <div className="details__background" onClick={closeDetails}></div>
       <div className={`details__content  ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
         {isFetching ? (
           <div className="accent-text center-text">Loading...</div>
@@ -37,7 +42,7 @@ const Details = () => {
                 and weight is {person.mass}
                 kg.
               </span>
-              <Button className="details__btn" type="button" onClick={() => navigate(-1)}>
+              <Button className="details__btn" type="button" onClick={closeDetails}>
                 Close
               </Button>
             </>

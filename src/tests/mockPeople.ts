@@ -1,4 +1,4 @@
-import { Person } from '../src/shared/types';
+import { Person } from './../models/types';
 
 export const people: Person[] = [
   {

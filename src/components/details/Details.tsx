@@ -1,8 +1,10 @@
 import { useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { useAppDispatch } from './../../hooks/useAppDispatch';
 import { useGetPersonByIdQuery } from './../../redux/peopleApi';
 import { ThemeContext } from './../../store/ThemeContext';
+import { addDetails } from './../../store/detailsSlice';
 import Button from './../UI/button/Button';
 import './details.sass';
 
@@ -10,8 +12,13 @@ const Details = () => {
   const { isDarkTheme } = useContext(ThemeContext);
   const { details } = useParams();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const { data: person, isFetching } = useGetPersonByIdQuery(details!);
+
+  if (person) {
+    dispatch(addDetails(person));
+  }
 
   return (
     <div className={`details ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>

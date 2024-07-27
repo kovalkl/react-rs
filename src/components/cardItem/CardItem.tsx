@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { useCustomSearchParams } from '../../hooks/useCustomSearchParams';
 import { Person } from '../../models/types';
 import { ThemeContext } from '../../store/ThemeContext';
+import { togglePerson } from '../../store/peopleSlice';
+import { useAppDispatch } from './../../hooks/useAppDispatch';
 import './cardItem.sass';
 import { getPersonId } from './getPersonId';
 
@@ -21,6 +23,16 @@ const PERSON_PARAMS = {
 const CardItem = ({ person }: CardItemProps) => {
   const { currentPage, searchText } = useCustomSearchParams();
   const { isDarkTheme } = useContext(ThemeContext);
+  const dispatch = useAppDispatch();
+
+  const addToStore = (e: React.MouseEvent<HTMLLabelElement>) => {
+    e.stopPropagation();
+    if (!(e.target instanceof HTMLInputElement)) {
+      return;
+    }
+
+    dispatch(togglePerson(person));
+  };
 
   return (
     <Link
@@ -43,6 +55,10 @@ const CardItem = ({ person }: CardItemProps) => {
           ))}
         </ul>
       </div>
+      <label className="check-label" onClick={(e) => addToStore(e)}>
+        <input type="checkbox" />
+        Add to Store
+      </label>
     </Link>
   );
 };

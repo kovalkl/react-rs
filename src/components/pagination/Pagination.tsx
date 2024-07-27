@@ -1,5 +1,5 @@
 import { useCustomSearchParams } from '../../hooks/useCustomSearchParams';
-import { useGetPeopleQuery } from '../../redux';
+import { useGetPeopleQuery } from '../../redux/peopleApi';
 import Button from './../UI/button/Button';
 import './pagination.sass';
 

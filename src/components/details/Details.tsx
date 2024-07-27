@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { useGetPersonByIdQuery } from './../../redux';
+import { useGetPersonByIdQuery } from './../../redux/peopleApi';
 import { ThemeContext } from './../../store/ThemeContext';
 import Button from './../UI/button/Button';
 import './details.sass';

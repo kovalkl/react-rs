@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
+import ThemeButton from '../themeButton/ThemeButton';
 import { ThemeContext } from './../../store/ThemeContext';
-import ThemeButton from './../ThemeButton/ThemeButton';
 import SearchBar from './../searchBar/SearchBar';
 import './header.sass';
 

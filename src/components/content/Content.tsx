@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 
 import CardsList from '../cardList/CardList';
 import { useCustomSearchParams } from './../../hooks/useCustomSearchParams';
-import { useGetPeopleQuery } from './../../redux';
+import { useGetPeopleQuery } from './../../redux/peopleApi';
 import './content.sass';
 
 const Content = () => {

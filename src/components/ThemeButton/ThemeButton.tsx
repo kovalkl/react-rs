@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
+import { ThemeContext } from '../../store/ThemeContext';
 import './../../index.sass';
-import { ThemeContext } from './../../store/ThemeContext';
 import './themeButton.sass';
 
 const ThemeButton = () => {
@@ -9,7 +9,7 @@ const ThemeButton = () => {
 
   return (
     <form className="theme-button">
-      <label>
+      <label className="check-label">
         <input
           type="radio"
           name="theme"
@@ -19,7 +19,7 @@ const ThemeButton = () => {
         />
         Light
       </label>
-      <label>
+      <label className="check-label">
         <input
           type="radio"
           name="theme"

@@ -2,16 +2,16 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { Person } from '../models/types';
 
-type PeopleState = {
+type SelectedPeopleState = {
   list: Person[];
 };
 
-const initialState: PeopleState = {
+const initialState: SelectedPeopleState = {
   list: [],
 };
 
-const peopleSlice = createSlice({
-  name: 'people',
+const selectedPeopleSlice = createSlice({
+  name: 'selectedPeople',
   initialState,
   reducers: {
     togglePerson(state, action: PayloadAction<Person>) {
@@ -25,6 +25,6 @@ const peopleSlice = createSlice({
   },
 });
 
-export const { togglePerson, clearState } = peopleSlice.actions;
+export const { togglePerson, clearState } = selectedPeopleSlice.actions;
 
-export default peopleSlice.reducer;
+export default selectedPeopleSlice.reducer;

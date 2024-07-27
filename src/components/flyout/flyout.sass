@@ -2,16 +2,16 @@
 
 .flyout
   display: none
-  position: absolute
+  position: sticky
   bottom: 0
-  left: 0
-  z-index: 1
   width: 100%
+  margin: 0 auto
+  margin-top: auto
   padding: 20px
   color: $light-color
 
   &.active
-    display: flex
+    display: block
 
   &.light-theme
     background-color: $dark-color

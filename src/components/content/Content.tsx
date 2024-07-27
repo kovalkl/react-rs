@@ -1,44 +1,25 @@
-import { useEffect, useState } from 'react';
-import { Outlet, useSearchParams } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
-import useFetching from '../../hooks/useFetching';
-import useSearchQuery from '../../hooks/useSearchQuery';
-import peopleService from '../../services/PeopleService';
-import { Person } from '../../shared/types';
-import { getSearchParams } from '../../utils/getSearchParams';
-import CardsList from '../cardsList/CardsList';
+import CardsList from '../cardList/CardList';
+import { useCustomSearchParams } from './../../hooks/useCustomSearchParams';
+import { useGetPeopleQuery } from './../../redux';
 import './content.sass';
 
 const Content = () => {
-  const [searchParams] = useSearchParams();
-  const params = getSearchParams(searchParams);
-  const { currentPage } = params;
-  let { searchText } = params;
+  const { currentPage, searchText } = useCustomSearchParams();
 
-  const [searchStoreText] = useSearchQuery();
-
-  if (!searchText) {
-    searchText = searchStoreText;
-  }
-
-  const [people, setPeople] = useState<Person[]>([]);
-
-  const [fetchPeople, isLoadingPeople] = useFetching(async () => {
-    const { results } = await peopleService.getPeople(currentPage, searchText);
-    setPeople(results);
+  const { data, isFetching } = useGetPeopleQuery({
+    page: currentPage,
+    searchText,
   });
-
-  useEffect(() => {
-    fetchPeople();
-  }, [currentPage, searchText]);
 
   return (
     <section className="content">
-      {isLoadingPeople ? (
-        'Loading...'
+      {isFetching ? (
+        <h2>Loading...</h2>
       ) : (
         <div className="content__wrapper">
-          <CardsList people={people} />
+          <CardsList people={data ? data.results : []} />
           <Outlet />
         </div>
       )}

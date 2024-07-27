@@ -2,9 +2,9 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
-    include: ['./tests/**/*.test.{ts,tsx}'],
+    include: ['./src/components/**/*.test.{ts,tsx}'],
     environment: 'jsdom',
-    setupFiles: ['./tests/setup.ts'],
+    setupFiles: ['./src/tests/setup.ts'],
     globals: true,
     coverage: {
       provider: 'v8',

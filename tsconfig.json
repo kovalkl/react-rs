@@ -4,7 +4,11 @@
     "noImplicitAny": true,
     "forceConsistentCasingInFileNames": true,
     "types": ["vitest/globals"],
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "files": [],
   "references": [

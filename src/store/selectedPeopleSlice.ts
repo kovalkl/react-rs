@@ -3,11 +3,11 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Person } from '../models/types';
 
 type SelectedPeopleState = {
-  list: Person[];
+  list: { [url: string]: Person };
 };
 
 const initialState: SelectedPeopleState = {
-  list: [],
+  list: {},
 };
 
 const selectedPeopleSlice = createSlice({
@@ -15,12 +15,13 @@ const selectedPeopleSlice = createSlice({
   initialState,
   reducers: {
     togglePerson(state, action: PayloadAction<Person>) {
-      state.list.find((person) => person.url === action.payload.url)
-        ? (state.list = state.list.filter((person) => person.url !== action.payload.url))
-        : state.list.push(action.payload);
+      Object.keys(state.list).includes(action.payload.url)
+        ? delete state.list[action.payload.url]
+        : (state.list[action.payload.url] = action.payload);
     },
+
     clearState(state) {
-      state.list = [];
+      state.list = {};
     },
   },
 });

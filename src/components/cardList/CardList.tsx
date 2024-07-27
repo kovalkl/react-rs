@@ -6,15 +6,16 @@ import './cardList.sass';
 
 interface CardListProps {
   people: Person[];
+  selectedPeople: string[];
 }
 
-const CardList: React.FC<CardListProps> = ({ people }) => {
+const CardList: React.FC<CardListProps> = ({ people, selectedPeople }) => {
   return (
     <div className="cards">
       {people.length ? (
         <ul className="cards-list" data-testid="cards-list">
           {people.map((person: Person) => (
-            <CardItem key={person.edited} person={person} />
+            <CardItem key={person.edited} person={person} selectedPeople={selectedPeople} />
           ))}
         </ul>
       ) : (

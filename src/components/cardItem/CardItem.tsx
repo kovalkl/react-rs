@@ -11,6 +11,7 @@ import { getPersonId } from './getPersonId';
 
 interface CardItemProps {
   person: Person;
+  selectedPeople: string[];
 }
 
 const PERSON_PARAMS = {
@@ -20,7 +21,7 @@ const PERSON_PARAMS = {
   eye_color: 'Eye color',
 };
 
-const CardItem = ({ person }: CardItemProps) => {
+const CardItem = ({ person, selectedPeople }: CardItemProps) => {
   const { currentPage, searchText } = useCustomSearchParams();
   const { isDarkTheme } = useContext(ThemeContext);
   const dispatch = useAppDispatch();
@@ -34,10 +35,12 @@ const CardItem = ({ person }: CardItemProps) => {
     dispatch(togglePerson(person));
   };
 
+  const isChecked = () => selectedPeople.includes(person.url);
+
   return (
     <Link
       to={`/details/${getPersonId(person.url)}?page=${currentPage}${searchText ? `&search=${searchText}` : ''}`}
-      className={`person ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}
+      className={`person ${isDarkTheme ? 'dark-theme' : 'light-theme'}${isChecked() ? ' checked' : ''}`}
       id={getPersonId(person.url)}
       data-testid="card-item"
     >
@@ -56,7 +59,7 @@ const CardItem = ({ person }: CardItemProps) => {
         </ul>
       </div>
       <label className="check-label" onClick={(e) => toggleStore(e)}>
-        <input type="checkbox" />
+        <input type="checkbox" checked={isChecked()} />
         Add to Store
       </label>
     </Link>

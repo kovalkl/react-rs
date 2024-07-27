@@ -9,7 +9,10 @@ import './flyout.sass';
 
 const Flyout = () => {
   const { isDarkTheme } = useContext(ThemeContext);
-  const selectItemsNumber = useAppSelector((state) => state.selectedPeople.list.length);
+
+  const selectItemsNumber = useAppSelector(
+    (state) => Object.keys(state.selectedPeople.list).length,
+  );
 
   const text = `${selectItemsNumber} ${selectItemsNumber === 1 ? 'person is' : 'people are'} selected`;
   const className = `flyout ${isDarkTheme ? 'dark-theme' : 'light-theme'} ${selectItemsNumber ? 'active' : ''}`;

@@ -7,7 +7,7 @@ import { useGetPeopleQuery } from './../../redux/peopleApi';
 import { addCards } from './../../store/pageCardsSlice';
 import './content.sass';
 
-const Content = () => {
+const Content = ({ selectedPeople }: { selectedPeople: string[] }) => {
   const { currentPage, searchText } = useCustomSearchParams();
   const dispatch = useAppDispatch();
 
@@ -26,7 +26,7 @@ const Content = () => {
         <h2>Loading...</h2>
       ) : (
         <div className="content__wrapper">
-          <CardsList people={data ? data.results : []} />
+          <CardsList people={data ? data.results : []} selectedPeople={selectedPeople} />
           <Outlet />
         </div>
       )}

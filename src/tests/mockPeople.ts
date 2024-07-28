@@ -1,6 +1,6 @@
 import { Person } from './../models/types';
 
-export const people: Person[] = [
+export const mockPeople: Person[] = [
   {
     name: 'Luke Skywalker',
     height: '172',
@@ -69,3 +69,5 @@ export const people: Person[] = [
     url: 'https://swapi.dev/api/people/18/',
   },
 ];
+
+export const mockPerson = mockPeople[0];

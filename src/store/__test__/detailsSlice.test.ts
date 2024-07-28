@@ -1,4 +1,4 @@
-import { people } from './../../tests/mockPeople';
+import { mockPerson } from './../../tests/mockPeople';
 import detailsReducer, { addDetails, clearDetails } from './../detailsSlice';
 
 describe('detailsSlice', () => {
@@ -11,12 +11,12 @@ describe('detailsSlice', () => {
   it('should add details with addDetails action', () => {
     const action = {
       type: addDetails.type,
-      payload: people[0],
+      payload: mockPerson,
     };
 
     const result = detailsReducer({ person: null }, action);
 
-    expect(result).toEqual({ person: people[0] });
+    expect(result).toEqual({ person: mockPerson });
   });
 
   it('should clear details with clearDetails action', () => {
@@ -24,7 +24,7 @@ describe('detailsSlice', () => {
       type: clearDetails.type,
     };
 
-    const result = detailsReducer({ person: people[0] }, action);
+    const result = detailsReducer({ person: mockPerson }, action);
 
     expect(result).toEqual({ person: null });
   });

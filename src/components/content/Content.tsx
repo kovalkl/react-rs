@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import CardsList from '../cardList/CardList';
@@ -16,9 +17,11 @@ const Content = ({ selectedPeople }: { selectedPeople: string[] }) => {
     searchText,
   });
 
-  if (data) {
-    dispatch(addCards(data.results));
-  }
+  useEffect(() => {
+    if (data) {
+      dispatch(addCards(data.results));
+    }
+  }, [data, dispatch]);
 
   return (
     <section className="content">

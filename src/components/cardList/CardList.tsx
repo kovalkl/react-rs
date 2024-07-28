@@ -1,7 +1,5 @@
-import React from 'react';
-
-import { Person } from '../../models/types';
-import CardItem from '../cardItem/CardItem';
+import { Person } from './../../models/types';
+import CardItem from './../cardItem/CardItem';
 import './cardList.sass';
 
 interface CardListProps {
@@ -9,7 +7,7 @@ interface CardListProps {
   selectedPeople: string[];
 }
 
-const CardList: React.FC<CardListProps> = ({ people, selectedPeople }) => {
+const CardList: React.FC<CardListProps> = ({ people, selectedPeople }: CardListProps) => {
   return (
     <div className="cards">
       {people.length ? (

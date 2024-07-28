@@ -1,27 +1,63 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Content > should render correctly 1`] = `
+exports[`ThemeButton > should render correctly 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <section
-        class="content"
+      <form
+        class="theme-button"
       >
-        <h2>
-          Loading...
-        </h2>
-      </section>
+        <label
+          class="check-label"
+        >
+          <input
+            checked=""
+            name="theme"
+            type="radio"
+            value="light"
+          />
+          Light
+        </label>
+        <label
+          class="check-label"
+        >
+          <input
+            name="theme"
+            type="radio"
+            value="dark"
+          />
+          Dark
+        </label>
+      </form>
     </div>
   </body>,
   "container": <div>
-    <section
-      class="content"
+    <form
+      class="theme-button"
     >
-      <h2>
-        Loading...
-      </h2>
-    </section>
+      <label
+        class="check-label"
+      >
+        <input
+          checked=""
+          name="theme"
+          type="radio"
+          value="light"
+        />
+        Light
+      </label>
+      <label
+        class="check-label"
+      >
+        <input
+          name="theme"
+          type="radio"
+          value="dark"
+        />
+        Dark
+      </label>
+    </form>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

@@ -5,14 +5,16 @@ import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 
 import store from './../../../store/index';
-import Content from './../Content';
+import ErrorBoundary from './../ErrorBoundary';
 
-describe('Content', () => {
-  it('should render correctly', () => {
+describe('ErrorBoundary', () => {
+  it('should render children correctly', () => {
     const component = render(
       <Provider store={store}>
         <MemoryRouter>
-          <Content selectedPeople={[]} />
+          <ErrorBoundary>
+            <div>test</div>
+          </ErrorBoundary>
         </MemoryRouter>
       </Provider>,
     );

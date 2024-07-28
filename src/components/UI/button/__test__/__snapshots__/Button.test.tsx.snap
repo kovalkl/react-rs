@@ -1,27 +1,25 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Content > should render correctly 1`] = `
+exports[`Button > should render correctly 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <section
-        class="content"
+      <button
+        class="button button_error undefined"
+        type="button"
       >
-        <h2>
-          Loading...
-        </h2>
-      </section>
+        test
+      </button>
     </div>
   </body>,
   "container": <div>
-    <section
-      class="content"
+    <button
+      class="button button_error undefined"
+      type="button"
     >
-      <h2>
-        Loading...
-      </h2>
-    </section>
+      test
+    </button>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

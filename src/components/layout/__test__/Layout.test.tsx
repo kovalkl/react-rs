@@ -5,14 +5,14 @@ import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 
 import store from './../../../store/index';
-import Content from './../Content';
+import Layout from './../Layout';
 
-describe('Content', () => {
+describe('Flyout', () => {
   it('should render correctly', () => {
     const component = render(
       <Provider store={store}>
         <MemoryRouter>
-          <Content selectedPeople={[]} />
+          <Layout />
         </MemoryRouter>
       </Provider>,
     );

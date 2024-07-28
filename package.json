@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@babel/plugin-transform-react-jsx": "^7.24.7",
+    "@jest/globals": "^29.7.0",
     "@reduxjs/toolkit": "^2.2.6",
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.0.0",

@@ -6,7 +6,7 @@ export const useCustomSearchParams = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = searchParams.get('page') || '1';
   let searchText = searchParams.get('search') || '';
-  const [searchStoreText, setSearchStoreText] = useSearchStore();
+  const { searchStoreText, setSearchStoreText } = useSearchStore();
 
   if (!searchText) {
     searchText = searchStoreText;

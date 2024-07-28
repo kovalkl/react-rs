@@ -2,18 +2,23 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 import Store from '../store/LocalStore';
 
-const useSearchStore = (): [string, Dispatch<SetStateAction<string>>] => {
+type UseSearchStoreReturn = {
+  searchStoreText: string;
+  setSearchStoreText: Dispatch<SetStateAction<string>>;
+};
+
+const useSearchStore = (): UseSearchStoreReturn => {
   const store = Store.getInstance();
-  const [value, setValue] = useState(store.getSearchHistory() || '');
+  const [searchStoreText, setSearchStoreText] = useState(store.getSearchHistory() || '');
 
   useEffect(() => {
-    store.setSearchHistory(value);
+    store.setSearchHistory(searchStoreText);
     return () => {
-      store.setSearchHistory(value);
+      store.setSearchHistory(searchStoreText);
     };
-  }, [value]);
+  }, [searchStoreText]);
 
-  return [value, setValue];
+  return { searchStoreText, setSearchStoreText };
 };
 
 export default useSearchStore;

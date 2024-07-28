@@ -1,21 +1,21 @@
 import { useContext } from 'react';
 
-import { useAppSelector } from '../../hooks/useAppSelector';
-import { ThemeContext } from '../../store/ThemeContext';
-import { clearState } from '../../store/selectedPeopleSlice';
-import Button from '../UI/button/Button';
 import { useAppDispatch } from './../../hooks/useAppDispatch';
+import { useAppSelector } from './../../hooks/useAppSelector';
+import { ThemeContext } from './../../store/ThemeContext';
+import { clearState } from './../../store/selectedPeopleSlice';
+import Button from './../UI/button/Button';
 import './flyout.sass';
 
 const Flyout = () => {
   const { isDarkTheme } = useContext(ThemeContext);
 
-  const selectItemsNumber = useAppSelector(
-    (state) => Object.keys(state.selectedPeople.list).length,
-  );
+  const selectPeople = useAppSelector((state) => state.selectedPeople.list);
 
-  const text = `${selectItemsNumber} ${selectItemsNumber === 1 ? 'person is' : 'people are'} selected`;
-  const className = `flyout ${isDarkTheme ? 'dark-theme' : 'light-theme'} ${selectItemsNumber ? 'active' : ''}`;
+  const selectedPeopleNumber = Object.keys(selectPeople).length;
+
+  const text = `${selectedPeopleNumber} ${selectedPeopleNumber === 1 ? 'person is' : 'people are'} selected`;
+  const className = `flyout ${isDarkTheme ? 'dark-theme' : 'light-theme'} ${selectedPeopleNumber ? 'active' : ''}`;
 
   const dispatch = useAppDispatch();
   return (

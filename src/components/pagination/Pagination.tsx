@@ -15,7 +15,6 @@ const Pagination = () => {
     <div className="container">
       <div className="pagination accent-text ">
         <Button
-          type="button"
           disabled={!previous}
           onClick={() => setCurrentPage((parseInt(currentPage) - 1).toString())}
         >
@@ -23,7 +22,6 @@ const Pagination = () => {
         </Button>
         <span className="pagination__page">{currentPage}</span>
         <Button
-          type="button"
           disabled={!next}
           onClick={() => setCurrentPage((parseInt(currentPage) + 1).toString())}
         >

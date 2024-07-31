@@ -1,29 +1,14 @@
+import { ButtonHTMLAttributes } from 'react';
+
 import './button.sass';
 
-interface IButtonProps {
-  type: 'button' | 'error';
-  disabled?: boolean;
-  onClick?: () => void;
-  children: React.ReactNode;
-  className?: string;
+interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'error';
 }
 
-const Button = ({ type, onClick, disabled, children, className }: IButtonProps) => {
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (disabled) return;
-    e.preventDefault();
-    onClick && onClick();
-  };
-
-  const buttonClass = `button ${type === 'error' ? 'button_error' : ''} ${className}`;
-
+const Button = ({ variant, children, ...props }: IButtonProps) => {
   return (
-    <button
-      className={buttonClass}
-      type="button"
-      onClick={(e) => handleClick(e)}
-      disabled={disabled}
-    >
+    <button className="button" data-variant={variant} {...props}>
       {children}
     </button>
   );

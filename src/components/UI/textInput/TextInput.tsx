@@ -1,20 +1,11 @@
+import { InputHTMLAttributes } from 'react';
+
 import './textInput.sass';
 
-interface TextInputProps {
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
+interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {}
 
-const TextInput = ({ value, onChange }: TextInputProps) => {
-  return (
-    <input
-      type="text"
-      placeholder="Search..."
-      className="text-input"
-      value={value}
-      onChange={(e) => onChange(e)}
-    />
-  );
+const TextInput = ({ ...props }: TextInputProps) => {
+  return <input type="text" placeholder="Search..." className="text-input" {...props} />;
 };
 
 export default TextInput;

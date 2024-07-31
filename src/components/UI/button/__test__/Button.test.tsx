@@ -12,7 +12,7 @@ describe('Button', () => {
     const component = render(
       <Provider store={store}>
         <MemoryRouter>
-          <Button type="error">test</Button>
+          <Button variant="error">test</Button>
         </MemoryRouter>
       </Provider>,
     );

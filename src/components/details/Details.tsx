@@ -42,9 +42,7 @@ const Details = () => {
                 and weight is {person.mass}
                 kg.
               </span>
-              <Button className="details__btn" type="button" onClick={closeDetails}>
-                Close
-              </Button>
+              <Button onClick={closeDetails}>Close</Button>
             </>
           )
         )}

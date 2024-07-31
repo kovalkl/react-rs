@@ -22,10 +22,8 @@ const Flyout = () => {
     <div className={className}>
       <div className="container flyout__wrapper">
         <p className="flyout__text">{text}</p>
-        <Button className="flyout__btn" type="button">
-          Download
-        </Button>
-        <Button className="flyout__btn" type="error" onClick={() => dispatch(clearState())}>
+        <Button>Download</Button>
+        <Button variant="error" onClick={() => dispatch(clearState())}>
           Unselect all
         </Button>
       </div>

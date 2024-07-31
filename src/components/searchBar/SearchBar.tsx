@@ -18,9 +18,7 @@ const SearchBar = () => {
     <div className="search">
       <form className="search__form" onSubmit={handleSearchPerson}>
         <TextInput value={inputText} onChange={(e) => setInputText(e.target.value)} />
-        <Button type="button" onClick={handleSearchPerson}>
-          Search
-        </Button>
+        <Button onClick={handleSearchPerson}>Search</Button>
       </form>
     </div>
   );

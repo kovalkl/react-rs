@@ -9,9 +9,7 @@ const NotFound = () => {
   return (
     <div className="not-found">
       <div className="accent-text center-text">Oops! Page Not Found!</div>
-      <Button onClick={() => navigate('/?page=1')} type="button">
-        Back to Home
-      </Button>
+      <Button onClick={() => navigate('/?page=1')}>Back to Home</Button>
     </div>
   );
 };

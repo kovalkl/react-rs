@@ -11,7 +11,8 @@ dist
 dist-ssr
 *.local
 coverage
-css
+**/css/
+**/__snapshots__/
 
 .vscode/*
 !.vscode/extensions.json

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { Person } from '../models/types';
+import { Person } from '@/models/types';
 
 type PageCardsState = {
   list: Person[];

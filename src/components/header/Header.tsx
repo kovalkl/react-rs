@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 
-import ThemeButton from '../themeButton/ThemeButton';
-import { ThemeContext } from './../../store/ThemeContext';
-import SearchBar from './../searchBar/SearchBar';
-import './header.sass';
+import '@/components/header/header.sass';
+import SearchBar from '@/components/searchBar/SearchBar';
+import ThemeButton from '@/components/themeButton/ThemeButton';
+import { ThemeContext } from '@/store/ThemeContext';
 
 const Header = () => {
   const { isDarkTheme } = useContext(ThemeContext);

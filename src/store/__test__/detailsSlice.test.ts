@@ -1,5 +1,5 @@
-import { mockPerson } from './../../tests/mockPeople';
-import detailsReducer, { addDetails, clearDetails } from './../detailsSlice';
+import detailsReducer, { addDetails, clearDetails } from '@/store/detailsSlice';
+import { mockPerson } from '@/tests/mockPeople';
 
 describe('detailsSlice', () => {
   it('should return the initial state when passed an empty action', () => {

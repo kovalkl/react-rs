@@ -4,8 +4,8 @@ import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 
-import store from './../../../../store/index';
-import Button from './../Button';
+import Button from '@/components/UI/button/Button';
+import store from '@/store/index';
 
 describe('Button', () => {
   it('should render correctly', () => {

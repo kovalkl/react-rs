@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-import { useCustomSearchParams } from './../../hooks/useCustomSearchParams';
-import Button from './../UI/button/Button';
-import TextInput from './../UI/textInput/TextInput';
-import './searchBar.sass';
+import Button from '@/components/UI/button/Button';
+import TextInput from '@/components/UI/textInput/TextInput';
+import '@/components/searchBar/searchBar.sass';
+import { useCustomSearchParams } from '@/hooks/useCustomSearchParams';
 
 const SearchBar = () => {
   const { searchText, setSearchText } = useCustomSearchParams();

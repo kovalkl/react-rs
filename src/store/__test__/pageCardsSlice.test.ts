@@ -1,5 +1,5 @@
-import { mockPeople } from './../../tests/mockPeople';
-import pageCardsReducer, { addCards } from './../pageCardsSlice';
+import pageCardsReducer, { addCards } from '@/store/pageCardsSlice';
+import { mockPeople } from '@/tests/mockPeople';
 
 describe('pageCardsSlice', () => {
   it('should add cards array with addCards action', () => {

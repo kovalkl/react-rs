@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
-import Store from '../store/LocalStore';
+import Store from '@/store/LocalStore';
 
 type UseSearchStoreReturn = {
   searchStoreText: string;

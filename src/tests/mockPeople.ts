@@ -1,4 +1,4 @@
-import { Person } from './../models/types';
+import { Person } from '@/models/types';
 
 export const mockPeople: Person[] = [
   {

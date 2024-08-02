@@ -1,6 +1,6 @@
 import { InputHTMLAttributes } from 'react';
 
-import './textInput.sass';
+import '@/components/UI/textInput/textInput.sass';
 
 interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {}
 

@@ -4,8 +4,8 @@ import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 
-import store from './../../../store/index';
-import Flyout from './../Flyout';
+import Flyout from '@/components/flyout/Flyout';
+import store from '@/store/index';
 
 describe('Flyout', () => {
   it('should render correctly', () => {

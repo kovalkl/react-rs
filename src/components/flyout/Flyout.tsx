@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 
-import { useAppDispatch } from './../../hooks/useAppDispatch';
-import { useAppSelector } from './../../hooks/useAppSelector';
-import { ThemeContext } from './../../store/ThemeContext';
-import { clearState } from './../../store/selectedPeopleSlice';
-import Button from './../UI/button/Button';
-import './flyout.sass';
+import Button from '@/components/UI/button/Button';
+import '@/components/flyout/flyout.sass';
+import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { useAppSelector } from '@/hooks/useAppSelector';
+import { ThemeContext } from '@/store/ThemeContext';
+import { clearState } from '@/store/selectedPeopleSlice';
 
 const Flyout = () => {
   const { isDarkTheme } = useContext(ThemeContext);

@@ -1,12 +1,12 @@
 import { useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { useAppDispatch } from './../../hooks/useAppDispatch';
-import { useGetPersonByIdQuery } from './../../redux/peopleApi';
-import { ThemeContext } from './../../store/ThemeContext';
-import { addDetails, clearDetails } from './../../store/detailsSlice';
-import Button from './../UI/button/Button';
-import './details.sass';
+import Button from '@/components/UI/button/Button';
+import '@/components/details/details.sass';
+import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { useGetPersonByIdQuery } from '@/redux/peopleApi';
+import { ThemeContext } from '@/store/ThemeContext';
+import { addDetails, clearDetails } from '@/store/detailsSlice';
 
 const Details = () => {
   const { isDarkTheme } = useContext(ThemeContext);

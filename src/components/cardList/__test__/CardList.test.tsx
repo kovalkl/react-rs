@@ -4,9 +4,9 @@ import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import store from './../../../store/index';
-import { mockPeople } from './../../../tests/mockPeople.ts';
-import CardList from './../CardList.tsx';
+import CardList from '@/components/cardList/CardList.tsx';
+import store from '@/store/index';
+import { mockPeople } from '@/tests/mockPeople.ts';
 
 describe('CardsList', () => {
   it('should render message if there are no people', () => {

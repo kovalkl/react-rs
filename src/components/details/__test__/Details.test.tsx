@@ -3,8 +3,8 @@ import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 
-import store from './../../../store/index';
-import Details from './../Details';
+import Details from '@/components/details/Details';
+import store from '@/store/index';
 
 describe('Details', () => {
   it('should show loader when loading', () => {

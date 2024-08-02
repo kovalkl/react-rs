@@ -1,7 +1,7 @@
-import { useCustomSearchParams } from '../../hooks/useCustomSearchParams';
-import { useGetPeopleQuery } from '../../redux/peopleApi';
-import Button from './../UI/button/Button';
-import './pagination.sass';
+import Button from '@/components/UI/button/Button';
+import '@/components/pagination/pagination.sass';
+import { useCustomSearchParams } from '@/hooks/useCustomSearchParams';
+import { useGetPeopleQuery } from '@/redux/peopleApi';
 
 const Pagination = () => {
   const { currentPage, searchText, setCurrentPage } = useCustomSearchParams();

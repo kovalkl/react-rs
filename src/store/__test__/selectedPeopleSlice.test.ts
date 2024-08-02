@@ -1,5 +1,5 @@
-import { mockPerson } from './../../tests/mockPeople';
-import selectedPeopleReducer, { togglePerson, clearState } from './../selectedPeopleSlice';
+import selectedPeopleReducer, { togglePerson, clearState } from '@/store/selectedPeopleSlice';
+import { mockPerson } from '@/tests/mockPeople';
 
 describe('selectedPeopleSlice', () => {
   it('should return initial state when passed an empty action', () => {

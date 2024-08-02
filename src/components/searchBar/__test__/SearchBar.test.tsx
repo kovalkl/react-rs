@@ -4,8 +4,8 @@ import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 
-import store from './../../../store/index';
-import SearchBar from './../SearchBar';
+import SearchBar from '@/components/searchBar/SearchBar';
+import store from '@/store/index';
 
 describe('SearchBar', () => {
   it('should render correctly', () => {

@@ -4,8 +4,8 @@ import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 
-import store from './../../../store/index';
-import ErrorBoundary from './../ErrorBoundary';
+import ErrorBoundary from '@/components/errorBoundary/ErrorBoundary';
+import store from '@/store/index';
 
 describe('ErrorBoundary', () => {
   it('should render children correctly', () => {

@@ -1,13 +1,13 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-import { useCustomSearchParams } from '../../hooks/useCustomSearchParams';
-import { Person } from '../../models/types';
-import { ThemeContext } from '../../store/ThemeContext';
-import { togglePerson } from '../../store/selectedPeopleSlice';
-import { useAppDispatch } from './../../hooks/useAppDispatch';
-import './cardItem.sass';
-import { getPersonId } from './getPersonId';
+import '@/components/cardItem/cardItem.sass';
+import { getPersonId } from '@/components/cardItem/getPersonId';
+import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { useCustomSearchParams } from '@/hooks/useCustomSearchParams';
+import { Person } from '@/models/types';
+import { ThemeContext } from '@/store/ThemeContext';
+import { togglePerson } from '@/store/selectedPeopleSlice';
 
 interface CardItemProps {
   person: Person;

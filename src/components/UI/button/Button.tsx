@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes } from 'react';
 
-import './button.sass';
+import '@/components/UI/button/button.sass';
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'error';

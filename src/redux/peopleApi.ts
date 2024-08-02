@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import type { Person } from './../models/types';
+import type { Person } from '@/models/types';
 
 type PersonState = {
   count: number;

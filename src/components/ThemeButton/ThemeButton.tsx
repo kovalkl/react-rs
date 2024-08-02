@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 
-import { ThemeContext } from '../../store/ThemeContext';
-import './../../index.sass';
-import './themeButton.sass';
+import '@/components/themeButton/themeButton.sass';
+import '@/index.sass';
+import { ThemeContext } from '@/store/ThemeContext';
 
 const ThemeButton = () => {
   const { isDarkTheme, toggleTheme } = useContext(ThemeContext);

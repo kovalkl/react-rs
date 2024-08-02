@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 
-import useSearchStore from './../hooks/useSearchStore';
+import useSearchStore from '@/hooks/useSearchStore';
 
 export const useCustomSearchParams = () => {
   const [searchParams, setSearchParams] = useSearchParams();

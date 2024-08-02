@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { peopleApi } from './../redux/peopleApi';
-import detailsReducer from './detailsSlice';
-import pageCardsReducer from './pageCardsSlice';
-import selectedPeopleReducer from './selectedPeopleSlice';
+import { peopleApi } from '@/redux/peopleApi';
+import detailsReducer from '@/store/detailsSlice';
+import pageCardsReducer from '@/store/pageCardsSlice';
+import selectedPeopleReducer from '@/store/selectedPeopleSlice';
 
 const store = configureStore({
   reducer: {

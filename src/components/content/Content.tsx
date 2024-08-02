@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import CardsList from '../cardList/CardList';
-import { useAppDispatch } from './../../hooks/useAppDispatch';
-import { useCustomSearchParams } from './../../hooks/useCustomSearchParams';
-import { useGetPeopleQuery } from './../../redux/peopleApi';
-import { addCards } from './../../store/pageCardsSlice';
-import './content.sass';
+import CardsList from '@/components/cardList/CardList';
+import '@/components/content/content.sass';
+import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { useCustomSearchParams } from '@/hooks/useCustomSearchParams';
+import { useGetPeopleQuery } from '@/redux/peopleApi';
+import { addCards } from '@/store/pageCardsSlice';
 
 const Content = ({ selectedPeople }: { selectedPeople: string[] }) => {
   const { currentPage, searchText } = useCustomSearchParams();

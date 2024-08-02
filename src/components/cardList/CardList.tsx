@@ -1,6 +1,6 @@
-import { Person } from './../../models/types';
-import CardItem from './../cardItem/CardItem';
-import './cardList.sass';
+import CardItem from '@/components/cardItem/CardItem';
+import '@/components/cardList/cardList.sass';
+import { Person } from '@/models/types';
 
 interface CardListProps {
   people: Person[];

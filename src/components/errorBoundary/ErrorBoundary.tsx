@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import './errorBoundary.sass';
+import '@/components/errorBoundary/errorBoundary.sass';
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;

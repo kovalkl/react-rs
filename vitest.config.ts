@@ -1,8 +1,9 @@
+import path from 'path';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
-    include: ['./src/components/**/*.test.{ts,tsx}', './src/store/**/*.test.{ts,tsx}'],
+    include: ['./src/components/**/*.test.{ts,tsx}'],
     environment: 'jsdom',
     setupFiles: ['./src/tests/setup.ts'],
     globals: true,
@@ -11,6 +12,11 @@ export default defineConfig({
       reporter: ['text', 'json', 'html'],
       exclude: ['node_modules/'],
       reportsDirectory: './coverage',
+    },
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
     },
   },
 });

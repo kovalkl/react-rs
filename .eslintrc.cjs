@@ -30,11 +30,23 @@ module.exports = {
     react: {
       version: 'detect',
     },
+    'import/resolver': {
+      alias: {
+        map: [['@', './src']],
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
+      },
+    },
   },
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react-refresh/only-export-components': 'error',
     'no-console': ['error', { allow: ['warn', 'error'] }],
     'linebreak-style': ['error', 'unix'],
+    'no-restricted-imports': [
+      'error',
+      {
+        patterns: ['.*'],
+      },
+    ],
   },
 };

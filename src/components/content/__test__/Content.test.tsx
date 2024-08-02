@@ -4,8 +4,8 @@ import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 
-import store from './../../../store/index';
-import Content from './../Content';
+import Content from '@/components/content/Content';
+import store from '@/store/index';
 
 describe('Content', () => {
   it('should render correctly', () => {

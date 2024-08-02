@@ -4,8 +4,8 @@ import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 
-import store from './../../../store/index';
-import Pagination from './../Pagination';
+import Pagination from '@/components/pagination/Pagination';
+import store from '@/store/index';
 
 describe('Pagination', () => {
   it('should render the pagination buttons', async () => {

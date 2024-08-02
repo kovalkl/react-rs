@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { ThemeContext } from './../store/ThemeContext';
+import { ThemeContext } from '@/store/ThemeContext';
 
 const ThemeProvider = ({ children }: { children: React.ReactNode | null }) => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
-import Button from './../../components/UI/button/Button';
-import './notFound.sass';
+import Button from '@/components/UI/button/Button';
+import '@/views/notFound/notFound.sass';
 
 const NotFound = () => {
   const navigate = useNavigate();

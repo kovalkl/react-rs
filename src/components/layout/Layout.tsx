@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 
-import { ThemeContext } from '../../store/ThemeContext';
-import Flyout from '../flyout/Flyout';
-import Header from '../header/Header';
-import Main from './../main/Main';
+import Flyout from '@/components/flyout/Flyout';
+import Header from '@/components/header/Header';
+import Main from '@/components/main/Main';
+import { ThemeContext } from '@/store/ThemeContext';
 
 const Layout = () => {
   const { isDarkTheme } = useContext(ThemeContext);

@@ -1,7 +1,7 @@
-import { useAppSelector } from './../../hooks/useAppSelector';
-import Content from './../content/Content';
-import Pagination from './../pagination/Pagination';
-import './main.sass';
+import Content from '@/components/content/Content';
+import '@/components/main/main.sass';
+import Pagination from '@/components/pagination/Pagination';
+import { useAppSelector } from '@/hooks/useAppSelector';
 
 const Main = () => {
   const selectedPeopleArray = useAppSelector((state) => Object.keys(state.selectedPeople.list));

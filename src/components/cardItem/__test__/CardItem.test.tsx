@@ -5,9 +5,9 @@ import userEvent from '@testing-library/user-event';
 import { Provider } from 'react-redux';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
-import store from './../../../store/index';
-import { mockPerson } from './../../../tests/mockPeople';
-import CardItem from './../CardItem';
+import CardItem from '@/components/cardItem/CardItem';
+import store from '@/store/index';
+import { mockPerson } from '@/tests/mockPeople';
 
 describe('CardItem', () => {
   it('should render the relevant card information', () => {

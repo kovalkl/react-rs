@@ -1,5 +1,4 @@
 import { GetServerSideProps } from 'next';
-import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 
 import StoreProvider from '@/components/StoreProvider';
@@ -10,10 +9,6 @@ import Main from '@/components/main/Main';
 import { PeopleResponse, Person } from '@/models/types';
 
 const roboto = Roboto({ weight: '400', subsets: ['latin'] });
-
-export const metadata: Metadata = {
-  title: 'Galactic Characters',
-};
 
 type PageProps = {
   people: PeopleResponse;

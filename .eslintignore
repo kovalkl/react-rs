@@ -1,0 +1,7 @@
+*.js
+*.cjs
+*.d.ts
+vite.config.ts
+node_modules/
+coverage/
+dist

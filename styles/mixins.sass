@@ -1,0 +1,15 @@
+@import '@/styles/variables.sass'
+
+$shadow-transition: box-shadow 0.3s
+$shadow-effect: 0 0 2px #ffd700, 0 0 7px #ffd700, 0 0 20px #ffd700
+
+@mixin glowing-hover
+  transition: $shadow-transition
+  @media (any-hover: hover)
+    &:hover
+      box-shadow: $shadow-effect
+
+@mixin glowing-focus
+  transition: $shadow-transition
+  &:focus
+    box-shadow: $shadow-effect

@@ -26,7 +26,7 @@ describe('CardItem', () => {
   it('should render the relevant card information', () => {
     render(
       <StoreProvider>
-        <CardItem person={mockPerson} selectedPeople={[]} />
+        <CardItem person={mockPerson} selectedPeople={[]} searchParams="" />
       </StoreProvider>,
     );
 
@@ -42,7 +42,7 @@ describe('CardItem', () => {
     const user = userEvent.setup();
     render(
       <StoreProvider>
-        <CardItem person={mockPerson} selectedPeople={[]} />
+        <CardItem person={mockPerson} selectedPeople={[]} searchParams="" />
       </StoreProvider>,
     );
 

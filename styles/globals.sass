@@ -50,16 +50,18 @@ body
 .light-theme
   background-color: $light-color
   color: $dark-color
+  & .theme_block
+    background-color: $dark-color
+  & .details_block
+    background-color: $light-color
 
 .dark-theme
   background-color: $dark-color
   color: $light-color
-
-.light-theme-block
-  background-color: $dark-color
-
-.dark-theme-block
-  background-color: lighten($dark-color, 10)
+  & .theme_block
+    background-color: lighten($dark-color, 10)
+  & .details_block
+    background-color: $dark-color
 
 .container
   max-width: 1380px

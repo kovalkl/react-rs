@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/router';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import { useState } from 'react';
 
@@ -9,17 +9,18 @@ import TextInput from '@/components/UI/textInput/TextInput';
 import styles from '@/components/searchBar/SearchBar.module.sass';
 
 const SearchBar = () => {
-  const [searchText, setSearchText] = useState('');
+  const searchParams = useSearchParams();
+  const [searchText, setSearchText] = useState(searchParams.get('search') || '');
   const router = useRouter();
 
   const handleSearchPerson = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
+
     if (searchText) {
       router.push(`/?page=1&search=${searchText}`);
-      return;
+    } else {
+      router.push('/');
     }
-
-    router.push('/');
   };
 
   return (

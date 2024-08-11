@@ -5,13 +5,22 @@ import StoreProvider from '@/components/StoreProvider';
 import Pagination from '@/components/pagination/Pagination';
 import { mockResponse, mockOnePageResponse, mockAllPagesResponse } from '@/tests/mockPeople';
 
-vi.mock('next/router', () => ({
+vi.mock('next/navigation', () => ({
   useRouter: () => ({
     asPath: '/',
-    back: () => {},
+    back: vi.fn(),
     query: {
       search: 'l',
       page: '2',
+    },
+  }),
+  useSearchParams: () => ({
+    get: (key: string) => {
+      const params: { [key: string]: string } = {
+        search: 'l',
+        page: '2',
+      };
+      return params[key];
     },
   }),
 }));

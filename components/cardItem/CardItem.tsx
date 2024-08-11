@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 import styles from '@/components/cardItem/CardItem.module.sass';
 import { getPersonId } from '@/components/cardItem/getPersonId';
@@ -12,6 +11,7 @@ import { Person } from '@/models/types';
 interface CardItemProps {
   person: Person;
   selectedPeople: string[];
+  searchParams: string;
 }
 
 const PERSON_PARAMS = {
@@ -21,12 +21,11 @@ const PERSON_PARAMS = {
   eye_color: 'Eye color',
 };
 
-const CardItem = ({ person, selectedPeople }: CardItemProps) => {
-  const { asPath } = useRouter();
+const CardItem = ({ person, selectedPeople, searchParams }: CardItemProps) => {
   const id = getPersonId(person.url);
-  const dispatch = useAppDispatch();
 
   const isChecked = selectedPeople.includes(person.url);
+  const dispatch = useAppDispatch();
 
   const toggleStore = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.stopPropagation();
@@ -39,7 +38,7 @@ const CardItem = ({ person, selectedPeople }: CardItemProps) => {
 
   return (
     <Link
-      href={`${asPath}&details=${id}`}
+      href={`/?${searchParams}&details=${id}`}
       className={`${styles.person} ${isChecked ? styles['person__checked'] : ''}`}
       id={id}
       data-testid="card-item"
@@ -59,7 +58,7 @@ const CardItem = ({ person, selectedPeople }: CardItemProps) => {
         </ul>
       </div>
       <label
-        className={`check-label ${styles.checkbox}`}
+        className={`check-label ${styles.person__checkbox}`}
         onClick={(e) => e.stopPropagation()}
         htmlFor={`checkbox-${id}`}
       >

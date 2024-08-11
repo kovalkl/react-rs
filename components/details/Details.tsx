@@ -1,20 +1,19 @@
-import { useRouter } from 'next/router';
-
-import { useContext } from 'react';
+import { useRouter } from 'next/navigation';
 
 import Button from '@/components/UI/button/Button';
 import styles from '@/components/details/Details.module.sass';
 import { Person } from '@/models/types';
-import { ThemeContext } from '@/store/ThemeContext';
 
-const Details = ({ currentPerson }: { currentPerson: Person }) => {
+type DetailsProps = {
+  currentPerson: Person;
+};
+
+const Details = ({ currentPerson }: DetailsProps) => {
   const { back } = useRouter();
-  const { isDarkTheme } = useContext(ThemeContext);
-
   return (
     <div className={styles.details}>
       <div className={styles.details__background} onClick={() => back()}></div>
-      <div className={`${styles.details__content} ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
+      <div className={`${styles.details__content} details_block`}>
         <>
           <span className={styles.details__title}>{currentPerson.name}</span>
           <span>

@@ -5,13 +5,14 @@ import ThemeProvider from '@/components/ThemeProvider';
 import Details from '@/components/details/Details';
 import { mockPerson } from '@/tests/mockPeople';
 
-vi.mock('next/router', () => ({
+vi.mock('next/navigation', () => ({
   useRouter: () => ({
-    asPath: '/',
-    back: () => {},
+    back: vi.fn(),
+    push: vi.fn(),
+    replace: vi.fn(),
+    query: {},
   }),
 }));
-
 describe('Details', () => {
   it('should render details data correctly', () => {
     render(

@@ -1,5 +1,7 @@
+'use client';
+
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 
 import Button from '@/components/UI/button/Button';
 import styles from '@/components/pagination/Pagination.module.sass';
@@ -10,11 +12,12 @@ type PaginationProps = {
 };
 
 const Pagination = ({ next, previous }: PaginationProps) => {
-  const { query } = useRouter();
+  const searchParams = useSearchParams();
 
-  const searchText = (query.search as string) || '';
+  const searchText = searchParams.get('search') || '';
 
-  const formatPage = parseInt(query.page as string) || 1;
+  const formatPage = parseInt(searchParams.get('page')!) || 1;
+
   return (
     <div className="container">
       <div className={`${styles.pagination} accent-text `}>

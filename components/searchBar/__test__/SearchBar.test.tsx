@@ -7,9 +7,24 @@ import SearchBar from '@/components/searchBar/SearchBar';
 
 const mockPush = vi.fn();
 
-vi.mock('next/router', () => ({
+vi.mock('next/navigation', () => ({
   useRouter: () => ({
+    asPath: '/',
+    back: vi.fn(),
     push: mockPush,
+    query: {
+      search: 'l',
+      page: '2',
+    },
+  }),
+  useSearchParams: () => ({
+    get: (key: string) => {
+      const params: { [key: string]: string } = {
+        search: 'l',
+        page: '2',
+      };
+      return key in params ? params[key] : '';
+    },
   }),
 }));
 
